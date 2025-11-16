@@ -1,0 +1,11 @@
+// Premium upgrade tracking
+document.querySelectorAll('.premium-upgrade').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        const plan = e.target.dataset.plan;
+        // Track conversion intent
+        trackRevenueEvent('premium_upgrade_intent', 1.50, { plan });
+        
+        // Redirect to Stripe checkout
+        redirectToStripeCheckout(plan);
+    });
+});
