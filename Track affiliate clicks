@@ -1,0 +1,14 @@
+// Track affiliate clicks automatically
+document.querySelectorAll('.affiliate-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+        const product = link.dataset.product;
+        // Track in analytics
+        trackRevenueEvent('affiliate_click', 0.25, { product });
+        
+        // Add affiliate parameters
+        const url = new URL(link.href);
+        url.searchParams.set('ref', 'businesspostai');
+        url.searchParams.set('utm_source', 'affiliate');
+        link.href = url.toString();
+    });
+});
