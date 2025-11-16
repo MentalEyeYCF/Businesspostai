@@ -1,0 +1,12 @@
+// Lead form tracking
+document.getElementById('marketingForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    // Track high-value lead event
+    trackRevenueEvent('lead_submission', 10.00, { 
+        leadType: 'marketing_agency_match',
+        estimatedValue: '$10-100 per lead'
+    });
+    
+    // Submit to Google Form via webhook
+    submitToGoogleForm(formData);
+});
